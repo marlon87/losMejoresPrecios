@@ -5,6 +5,14 @@
  */
 package INTERFACES;
 
+import CAPADENEGOCIO.cliente;
+import Conection.conectarBD;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DAVID
@@ -14,9 +22,12 @@ public class Clientes extends javax.swing.JFrame {
     /**
      * Creates new form Clientes
      */
+    cliente reg=new cliente();
+    conectarBD cn;
     public Clientes() {
         initComponents();
         setLocationRelativeTo(null);
+        actualizar_pendientes();
     }
 
     /**
@@ -31,23 +42,25 @@ public class Clientes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        id_cliente = new javax.swing.JTextField();
+        cod_cliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         apellido = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         nit = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        telefono = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        correo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cui = new javax.swing.JTextField();
         regresar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        nombre1 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        Agregar = new javax.swing.JButton();
+        NUEVO = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +77,7 @@ public class Clientes extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
-        jPanel1.add(id_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 170, -1));
+        jPanel1.add(cod_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,19 +85,11 @@ public class Clientes extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 60, -1));
         jPanel1.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 170, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Sexo");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 40, -1));
-
-        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
-        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 60, -1));
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Codigo Cliente");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, -1));
-        jPanel1.add(nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 170, -1));
+        jPanel1.add(nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,18 +99,9 @@ public class Clientes extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Teléfono");
+        jLabel7.setText("Cui");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 70, -1));
-        jPanel1.add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 170, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Correo");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 50, -1));
-        jPanel1.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 170, -1));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496176447_user-add.png"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 170, -1));
+        jPanel1.add(cui, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 170, -1));
 
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496182226_arrow-return-180.png"))); // NOI18N
         regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,23 +109,109 @@ public class Clientes extends javax.swing.JFrame {
                 regresarActionPerformed(evt);
             }
         });
-        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, 70, 40));
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 70, 40));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Nit");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
-        jPanel1.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 170, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 170, -1));
+
+        jPanel2.setBackground(java.awt.Color.lightGray);
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Opciones")));
+
+        jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496176447_user-add.png"))); // NOI18N
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarActionPerformed(evt);
+            }
+        });
+
+        NUEVO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        NUEVO.setText("NUEVO");
+        NUEVO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NUEVOActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(NUEVO, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(NUEVO, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 520, 130));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 500, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,6 +224,169 @@ public class Clientes extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_regresarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+        reg.setIdClientes(Integer.parseInt(this.cod_cliente.getText()));
+        reg.setNombre(this.nombre.getText());
+        reg.setApellido(this.apellido.getText());
+        reg.setDireccion(direccion.getText());
+        reg.setCui(cui.getText());
+        reg.setNit(nit.getText());
+        reg.setAccion("update");
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+        cn = new conectarBD();
+            String res = cn.ProcedimientoClientes(reg.getIdClientes(), reg.getNombre(), reg.getApellido(),
+        reg.getDireccion(), reg.getCui(), reg.getNit(), reg.getAccion());
+        JOptionPane.showMessageDialog(null, "" + res);
+        actualizar_pendientes();
+        Borrar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Eliminar Registro
+        
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
+        if (resp == 0) {
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel(); //TableProducto es el nombre de mi tabla ;)
+        int fila = jTable1.getSelectedRow();
+        if (fila < 1) {
+        this.jButton2.setEnabled(false);
+        this.jButton3.setEnabled(false);
+        }
+        dtm.removeRow(jTable1.getSelectedRow());
+        try {
+        reg.setIdClientes(Integer.parseInt(this.cod_cliente.getText()));
+        reg.setNombre(this.nombre.getText());
+        reg.setApellido(this.apellido.getText());
+        reg.setDireccion(direccion.getText());
+        reg.setCui(cui.getText());
+        reg.setNit(nit.getText());
+        reg.setAccion("delete");
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+        cn = new conectarBD();
+        String res = cn.ProcedimientoClientes(reg.getIdClientes(), reg.getNombre(), reg.getApellido(),
+        reg.getDireccion(), reg.getCui(), reg.getNit(), reg.getAccion());
+        JOptionPane.showMessageDialog(null, "" + res);
+        }
+        actualizar_pendientes();
+        Borrar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        // Nuevo registro
+          try {
+        reg.setIdClientes(Integer.parseInt(this.cod_cliente.getText()));
+        reg.setNombre(this.nombre.getText());
+        reg.setApellido(this.apellido.getText());
+        reg.setDireccion(direccion.getText());
+        reg.setCui(cui.getText());
+        reg.setNit(nit.getText());
+        reg.setAccion("new");
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+        cn = new conectarBD();
+        String res = cn.ProcedimientoClientes(reg.getIdClientes(), reg.getNombre(), reg.getApellido(),
+        reg.getDireccion(), reg.getCui(), reg.getNit(), reg.getAccion());
+        JOptionPane.showMessageDialog(null, "" + res);
+
+        actualizar_pendientes();
+        Borrar();
+        this.jButton2.setEnabled(true);
+        this.jButton3.setEnabled(true);
+    }//GEN-LAST:event_AgregarActionPerformed
+
+    private void NUEVOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUEVOActionPerformed
+        // TODO add your handling code here:
+        Borrar();
+    }//GEN-LAST:event_NUEVOActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        //Asigar valores a panel
+        
+          int fila = this.jTable1.getSelectedRow();
+        try {
+        reg.setIdClientes(Integer.parseInt(jTable1.getValueAt(fila, 0).toString()));
+        reg.setNombre(jTable1.getValueAt(fila, 1).toString());
+        reg.setApellido(jTable1.getValueAt(fila, 2).toString());
+        reg.setDireccion(jTable1.getValueAt(fila, 3).toString());
+        reg.setCui(jTable1.getValueAt(fila, 4).toString());
+        reg.setNit(jTable1.getValueAt(fila, 5).toString());
+        reg.setAccion("query");
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+        
+        cod_cliente.setText(String.valueOf(reg.getIdClientes()));
+        nombre.setText(reg.getNombre());
+        apellido.setText(reg.getApellido());
+        direccion.setText(reg.getDireccion());
+        cui.setText(String.valueOf(reg.getCui()));
+        nit.setText(reg.getNit());
+        
+        
+
+
+        this.jButton2.setEnabled(true);
+        this.jButton3.setEnabled(true);
+    }//GEN-LAST:event_jTable1MouseClicked
+ void actualizar_pendientes() {
+
+        DefaultTableModel modelo = new DefaultTableModel(null, getcolumnas());
+
+        this.jTable1.setModel(modelo);
+
+        String sql = "SELECT * FROM losMejoresPrecios.clientes";
+
+        try {
+            cn = new conectarBD();
+
+            PreparedStatement st = cn.getConexion().prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            Object dato[] = new Object[6];
+            while (rs.next()) {
+                for (int i = 0; i < dato.length; i++) {
+                    dato[i] = rs.getObject(i + 1);
+
+                }
+
+                modelo.addRow(dato);
+            }
+
+            this.jTable1.setModel(modelo);
+        } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, "" + ex);       
+        }
+       this.jButton2.setEnabled(false);
+        this.jButton3.setEnabled(false);
+
+    }
+
+    void Borrar() {
+        cod_cliente.setText("");
+        nombre.setText("");
+        apellido.setText("");
+        direccion.setText("");
+        cui.setText("");
+        nit.setText("");
+        
+        this.jButton2.setEnabled(false);
+        this.jButton3.setEnabled(false);
+    }
+
+    private String[] getcolumnas() {
+        String columna[] = new String[]{"Id cliente", "Nombre", "Apellido", "Direccion", "Cui", "Nit"};
+        return columna;
+    }
     /**
      * @param args the command line arguments
      */
@@ -178,25 +423,27 @@ public class Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agregar;
+    private javax.swing.JButton NUEVO;
     private javax.swing.JTextField apellido;
-    private javax.swing.JTextField correo;
+    private javax.swing.JTextField cod_cliente;
+    private javax.swing.JTextField cui;
     private javax.swing.JTextField direccion;
-    private javax.swing.JTextField id_cliente;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField nit;
-    private javax.swing.JTextField nombre1;
+    private javax.swing.JTextField nombre;
     private javax.swing.JButton regresar;
-    private javax.swing.JComboBox<String> sexo;
-    private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

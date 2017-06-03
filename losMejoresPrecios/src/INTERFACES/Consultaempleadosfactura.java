@@ -5,7 +5,7 @@
  */
 package INTERFACES;
 
-import CAPADENEGOCIO.cliente;
+import CAPADENEGOCIO.empleado;
 import Conection.conectarBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Consultaempleadosfactura extends javax.swing.JFrame {
     conectarBD cn;
-    cliente reg = new cliente();
+    empleado reg = new empleado();
     /**
      * Creates new form Consultaempleadosfactura
      */

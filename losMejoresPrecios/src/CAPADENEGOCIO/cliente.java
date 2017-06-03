@@ -1,26 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package CAPADENEGOCIO;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.9FDCBF5D-F158-BA22-58EF-D6812EC0B72F]
-// </editor-fold> 
+/**
+ *
+ * @author SOPORTE IT
+ */
 public class cliente {
+int idClientes;
+String nombre, apellido, direccion, cui, nit,accion;
 
-    private int codEmp;
-    private String   nombre,
-            apellido,
-            direccion;
-    private int telefono;
-    private String sexo, cargo, fechaingreso, salario, accion;
-
-    public cliente() {
+    public int getIdClientes() {
+        return idClientes;
     }
 
-    public int getCodEmp() {
-        return codEmp;
-    }
-
-    public void setCodEmp(int codEmp) {
-        this.codEmp = codEmp;
+    public void setIdClientes(int idClientes) {
+        this.idClientes = idClientes;
     }
 
     public String getNombre() {
@@ -47,44 +45,20 @@ public class cliente {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public String getCui() {
+        return cui;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setCui(String cui) {
+        this.cui = cui;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getNit() {
+        return nit;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getFechaingreso() {
-        return fechaingreso;
-    }
-
-    public void setFechaingreso(String fechaingreso) {
-        this.fechaingreso = fechaingreso;
-    }
-
-    public String getSalario() {
-        return salario;
-    }
-
-    public void setSalario(String salario) {
-        this.salario = salario;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
     public String getAccion() {
@@ -95,6 +69,4 @@ public class cliente {
         this.accion = accion;
     }
 
-   
-    
 }

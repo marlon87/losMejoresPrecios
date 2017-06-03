@@ -5,7 +5,7 @@
  */
 package INTERFACES;
 
-import CAPADENEGOCIO.cliente;
+import CAPADENEGOCIO.empleado;
 import Conection.conectarBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ public class Empleados extends javax.swing.JFrame {
      * Creates new form Clientes
      */
     conectarBD cn;
-    cliente reg = new cliente();
+    empleado reg = new empleado();
 
     public Empleados() {
         initComponents();

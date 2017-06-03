@@ -5,7 +5,7 @@
  */
 package INTERFACES;
 
-import CAPADENEGOCIO.cliente;
+import CAPADENEGOCIO.empleado;
 import Conection.conectarBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class consultaproductos extends javax.swing.JFrame {
     conectarBD cn;
-    cliente reg = new cliente();
+    empleado reg = new empleado();
     /**
      * Creates new form consultaproductos
      */
@@ -93,6 +93,9 @@ public class consultaproductos extends javax.swing.JFrame {
         // LO MANDA A FACTURACION
         int fila = this.jTable1.getSelectedRow();
         int numero=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la Cantidad para el Producto:" + jTable1.getValueAt(fila, 1).toString()));
+        
+       // System.out.println(numero);
+        
         //JOptionPane.showMessageDialog(null, "Fila seleccionada: "+jTable1.getValueAt(fila, 1).toString());
        // String codigo = jTable1.getValueAt(fila, 0).toString();
         //String nit = jTable1.getValueAt(fila, 5).toString();
