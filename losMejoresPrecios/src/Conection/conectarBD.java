@@ -417,6 +417,42 @@ public class conectarBD {
         return mensaje;
                 
     }
+    
+    public  String ProcedimientoCatalogo(int IdCatalogo,String Descripcion,String accion){
+        
+       String mensaje="";
+        try {
+            
+             con = getConexion();
+ 
+            if (con == null) {
+                mensaje = "No hay conexión a la base de datos...!";
+            } else {
+                Statement st = con.createStatement();
+          
+                CallableStatement sp=con.prepareCall("{call insertar_catalogos(?,?,?)}");
+               
+                sp.setInt(1,IdCatalogo);
+                sp.setString(2,Descripcion);
+                sp.setString(3,accion); 
+            
+               if( sp.execute())
+
+                
+                st.close();
+                con.close();
+                
+               mensaje="Operacion realizada con Exito";
+            }
+        } catch (SQLException e) {
+            mensaje="Error al conectar: "+e;
+        } catch (Exception e) {
+            mensaje="Error: "+e;
+        }
+        
+        return mensaje;
+                
+    }
 }
    
   
