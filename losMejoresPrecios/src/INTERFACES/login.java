@@ -23,6 +23,7 @@ conectarBD con;
      */
     public login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
