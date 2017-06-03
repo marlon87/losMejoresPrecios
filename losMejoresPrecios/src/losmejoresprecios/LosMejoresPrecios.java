@@ -5,6 +5,8 @@
  */
 package losmejoresprecios;
 
+import INTERFACES.login;
+
 /**
  *
  * @author SRVLOGNET
@@ -16,6 +18,8 @@ public class LosMejoresPrecios {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        login b = new login();
+        b.setVisible(true);
     }
     
 }
