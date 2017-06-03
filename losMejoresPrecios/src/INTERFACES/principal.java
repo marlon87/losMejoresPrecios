@@ -40,14 +40,12 @@ public class principal extends javax.swing.JFrame {
         Cobros = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         proveedores = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         VentasContado = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         ventascredito = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         reportes = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        TipoPagos = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         productos = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -55,8 +53,6 @@ public class principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         Rutas = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        Pedidos = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
         compras = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         anulacion = new javax.swing.JButton();
@@ -81,13 +77,13 @@ public class principal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Pagos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 90, -1));
+        jLabel2.setText("Forma de Pagos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Rutas");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 80, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 80, -1));
 
         pagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496194600_money.png"))); // NOI18N
         pagos.addActionListener(new java.awt.event.ActionListener() {
@@ -136,11 +132,6 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(proveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 80, 70));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tipo de Pagos");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 120, 20));
-
         VentasContado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496196151_money.png"))); // NOI18N
         VentasContado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,14 +171,6 @@ public class principal extends javax.swing.JFrame {
         jLabel10.setText("Reportes");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 100, -1));
 
-        TipoPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496215151_document-02.png"))); // NOI18N
-        TipoPagos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TipoPagosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TipoPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 80, 70));
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Ventas Crédito");
@@ -204,7 +187,7 @@ public class principal extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Anulación");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 360, 80, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 80, -1));
 
         vehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496215427_car.png"))); // NOI18N
         vehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +195,7 @@ public class principal extends javax.swing.JFrame {
                 vehiculosActionPerformed(evt);
             }
         });
-        jPanel1.add(vehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 80, 70));
+        jPanel1.add(vehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 80, 70));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -226,25 +209,12 @@ public class principal extends javax.swing.JFrame {
                 RutasActionPerformed(evt);
             }
         });
-        jPanel1.add(Rutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 380, 80, -1));
+        jPanel1.add(Rutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 80, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Productos");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, 80, -1));
-
-        Pedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496215802_interface-45.png"))); // NOI18N
-        Pedidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PedidosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, 70, 70));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Pedidos");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, 80, -1));
 
         compras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496216127_icon-68.png"))); // NOI18N
         compras.addActionListener(new java.awt.event.ActionListener() {
@@ -252,12 +222,12 @@ public class principal extends javax.swing.JFrame {
                 comprasActionPerformed(evt);
             }
         });
-        jPanel1.add(compras, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 70, 70));
+        jPanel1.add(compras, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 70, 70));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Compras");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 80, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 80, -1));
 
         anulacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496216568_delete.png"))); // NOI18N
         anulacion.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +235,7 @@ public class principal extends javax.swing.JFrame {
                 anulacionActionPerformed(evt);
             }
         });
-        jPanel1.add(anulacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 390, 80, 70));
+        jPanel1.add(anulacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 80, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,13 +307,6 @@ public class principal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
 
-    private void TipoPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoPagosActionPerformed
-        // TODO add your handling code here:
-        TipoPagos tp = new TipoPagos();
-        tp.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_TipoPagosActionPerformed
-
     private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
         // TODO add your handling code here:
         Productos p = new Productos ();
@@ -364,13 +327,6 @@ public class principal extends javax.swing.JFrame {
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_RutasActionPerformed
-
-    private void PedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidosActionPerformed
-        // TODO add your handling code here:
-        Pedido p = new Pedido();
-        p.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_PedidosActionPerformed
 
     private void comprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprasActionPerformed
         // TODO add your handling code here:
@@ -424,9 +380,7 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cobros;
     private javax.swing.JButton Empleados;
-    private javax.swing.JButton Pedidos;
     private javax.swing.JButton Rutas;
-    private javax.swing.JButton TipoPagos;
     private javax.swing.JButton VentasContado;
     private javax.swing.JButton anulacion;
     private javax.swing.JButton clientes;
@@ -437,14 +391,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

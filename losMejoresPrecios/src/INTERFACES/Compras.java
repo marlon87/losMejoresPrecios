@@ -49,7 +49,6 @@ public class Compras extends javax.swing.JFrame {
         id_proveedor = new javax.swing.JTextField();
         id_empleado = new javax.swing.JTextField();
         id_pedido = new javax.swing.JTextField();
-        id_producto1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 102));
@@ -134,7 +133,6 @@ public class Compras extends javax.swing.JFrame {
         jPanel1.add(id_pedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 180, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 620));
-        getContentPane().add(id_producto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 180, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -192,7 +190,6 @@ public class Compras extends javax.swing.JFrame {
     private javax.swing.JTextField id_compra;
     private javax.swing.JTextField id_empleado;
     private javax.swing.JTextField id_pedido;
-    private javax.swing.JTextField id_producto1;
     private javax.swing.JTextField id_proveedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

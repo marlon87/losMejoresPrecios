@@ -5,7 +5,7 @@
  */
 package CLASES;
 
-import INTERFACES.login;
+import INTERFACES.Bienvenida;
 
 /**
  *
@@ -13,7 +13,7 @@ import INTERFACES.login;
  */
 public class MAIN {
     public static void main(String[] args) {
-        login b = new login();
+        Bienvenida b = new Bienvenida();
         b.setVisible(true);
     }
     
