@@ -5,11 +5,16 @@
  */
 package INTERFACES;
 //hola moviendo1
+
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DAVID
  */
 public class Facturas extends javax.swing.JFrame {
+
+    DefaultTableModel modelo = new DefaultTableModel();
 
     /**
      * Creates new form ventas_contado
@@ -17,7 +22,12 @@ public class Facturas extends javax.swing.JFrame {
     public Facturas() {
         initComponents();
         setLocationRelativeTo(null);
-        //setResizable(false);
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("PrecioVenta");
+        modelo.addColumn("Subtotal");
+        this.datos.setModel(modelo);
     }
 
     /**
@@ -38,7 +48,6 @@ public class Facturas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        fecha = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         serie = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -53,7 +62,7 @@ public class Facturas extends javax.swing.JFrame {
         direccioncliente = new javax.swing.JTextField();
         tipodepago = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        total1 = new javax.swing.JTextField();
+        total = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         iva = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -64,12 +73,18 @@ public class Facturas extends javax.swing.JFrame {
         nombrecliente = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         codigo_empleado_factu = new javax.swing.JTextField();
-        iva1 = new javax.swing.JTextField();
+        subtotal = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         anulacionfactura = new javax.swing.JButton();
         estadofactura = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        obtienecodigo = new javax.swing.JTextField();
+        obtieneprecioventa = new javax.swing.JTextField();
+        obtiennombre = new javax.swing.JTextField();
+        obtienecantidad1 = new javax.swing.JTextField();
+        addtable = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 102));
@@ -86,11 +101,11 @@ public class Facturas extends javax.swing.JFrame {
                 GenerarFacturaActionPerformed(evt);
             }
         });
-        jPanel1.add(GenerarFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 570, -1, -1));
+        jPanel1.add(GenerarFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 240, -1, -1));
 
         AgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496212138_floppy_disk_save.png"))); // NOI18N
-        jPanel1.add(AgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, 70, 50));
-        jPanel1.add(descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 500, 130, -1));
+        jPanel1.add(AgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 360, 70, 50));
+        jPanel1.add(descuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 600, 130, -1));
 
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/1496182226_arrow-return-180.png"))); // NOI18N
         regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,12 +113,12 @@ public class Facturas extends javax.swing.JFrame {
                 regresarActionPerformed(evt);
             }
         });
-        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 550, 70, 50));
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 290, 70, 50));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Descuento");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 500, 70, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 600, 70, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,13 +128,12 @@ public class Facturas extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tipo de pago");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 470, 100, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, 100, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Numero de Factura");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, -1));
-        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 120, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,18 +154,20 @@ public class Facturas extends javax.swing.JFrame {
 
         datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Id Detalle", "Id Producto", "Precio Unidad", "Cantidad", "Subtotal"
+                "Linea", "Codigo", "Descripcion", "Cantidad", "Precio Venta", "Sub Total"
             }
         ));
+        datos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                datosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(datos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 1190, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 1190, 270));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -181,23 +197,23 @@ public class Facturas extends javax.swing.JFrame {
                 tipodepagoActionPerformed(evt);
             }
         });
-        jPanel1.add(tipodepago, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 490, -1, -1));
+        jPanel1.add(tipodepago, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 600, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Total");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 520, 70, 20));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 620, 70, 20));
 
-        total1.setEditable(false);
-        jPanel1.add(total1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 520, 130, -1));
+        total.setEditable(false);
+        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 620, 130, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Iva:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 480, 70, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 580, 70, 20));
 
         iva.setEditable(false);
-        jPanel1.add(iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 480, 130, -1));
+        jPanel1.add(iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 580, 130, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,7 +237,7 @@ public class Facturas extends javax.swing.JFrame {
                 buscaempleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(buscaempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 130, 50));
+        jPanel1.add(buscaempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 130, 50));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,16 +255,16 @@ public class Facturas extends javax.swing.JFrame {
         codigo_empleado_factu.setEditable(false);
         jPanel1.add(codigo_empleado_factu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 50, -1));
 
-        iva1.setEditable(false);
-        jPanel1.add(iva1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 460, 130, -1));
+        subtotal.setEditable(false);
+        jPanel1.add(subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 560, 130, -1));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("SubTotal");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 460, 70, 20));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 560, 70, 20));
 
         anulacionfactura.setText("ANULACION");
-        jPanel1.add(anulacionfactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 130, 50));
+        jPanel1.add(anulacionfactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 560, 130, 50));
 
         estadofactura.setEditable(false);
         jPanel1.add(estadofactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 170, -1));
@@ -264,9 +280,35 @@ public class Facturas extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 140, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, 140, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1320, 700));
+        obtienecodigo.setEditable(false);
+        jPanel1.add(obtienecodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 90, -1));
+
+        obtieneprecioventa.setEditable(false);
+        jPanel1.add(obtieneprecioventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 100, -1));
+
+        obtiennombre.setEditable(false);
+        jPanel1.add(obtiennombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 80, -1));
+        jPanel1.add(obtienecantidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 100, -1));
+
+        addtable.setText("+");
+        addtable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addtableActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addtable, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 210, -1, -1));
+
+        jButton2.setText("jButton2");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 170, 80, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1340, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,7 +322,7 @@ public class Facturas extends javax.swing.JFrame {
 
     private void GenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarFacturaActionPerformed
         // TODO add your handling code here:
-        ReporteFacturas r = new ReporteFacturas ();
+        ReporteFacturas r = new ReporteFacturas();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_GenerarFacturaActionPerformed
@@ -310,6 +352,65 @@ public class Facturas extends javax.swing.JFrame {
         ver3.setVisible(true);
         ver3.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datosMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_datosMouseClicked
+
+    private void addtableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addtableActionPerformed
+             double cont2=0;
+        String[] agregar = new String[5];
+        agregar[0] = obtienecodigo.getText();
+        agregar[1] = obtiennombre.getText();
+        agregar[2] = obtienecantidad1.getText();
+        agregar[3] = obtieneprecioventa.getText();
+        double canti = Double.parseDouble(obtienecantidad1.getText());
+        double preci = Double.parseDouble(obtieneprecioventa.getText());
+        double resul = canti * preci;
+        agregar[4] = String.valueOf(String.format("%.2f", resul));
+        modelo.addRow(agregar);
+for(int i=0;i<this.modelo.getRowCount();i++)
+        {
+        cont2=Double.parseDouble(this.modelo.getValueAt(i,3).toString())+cont2;
+        }
+        subtotal.setText(String.valueOf(String.format("%.2f",cont2)));
+        iva.setText(String.valueOf(String.format("%.2f",cont2*0.12)));
+        total.setText(String.valueOf(String.format("%.2f",(cont2*0.12)+cont2)));
+       
+    }//GEN-LAST:event_addtableActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+    private String[] getcolumnas() {
+        //String columna[] = new String[]{"Id", "Descripcion", "Categoria","PRECIO COMPRA" ,"PRECIO VENTA", "existencia", "Tiempo Garantia"};
+        String columna[] = new String[]{"Codigo", "Descripcion", "Cantidad", "Precio Venta", "Sub Total"};
+        return columna;
+    }
+
+    public void cargar5() {
+        /*     //  modelo = new DefaultTableModel(null,getcolumnas());
+    
+    // this.datos.setModel(modelo);
+    
+    //Sección 2
+    String fila2[] = new String[6];
+    
+    //Sección 3
+    //fila2[0]=obtiene1.getText();
+    fila2[0]=obtienecodigo.getText();
+    fila2[1]=obtiennombre.getText();
+    fila2[2]=obtienecantidad1.getText();
+    fila2[3]=obtieneprecioventa.getText();
+    double canti=Double.parseDouble(obtienecantidad1.getText());
+    double preci=Double.parseDouble(obtieneprecioventa.getText());
+    double resul=canti*preci;
+    fila2[4]=String.valueOf(String.format("%.2f", resul));
+    //Sección 4
+    modelo.addRow(fila2);
+    datos.setModel(modelo);*/
+    }
 
     /**
      * @param args the command line arguments
@@ -352,6 +453,118 @@ public class Facturas extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -364,6 +577,7 @@ public class Facturas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCliente;
     private javax.swing.JButton GenerarFactura;
+    private javax.swing.JButton addtable;
     private javax.swing.JButton anulacionfactura;
     private javax.swing.JButton buscacliente;
     private javax.swing.JButton buscaempleado;
@@ -373,11 +587,10 @@ public class Facturas extends javax.swing.JFrame {
     private javax.swing.JTextField descuento;
     public static javax.swing.JTextField direccioncliente;
     private javax.swing.JTextField estadofactura;
-    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField id_factura;
     private javax.swing.JTextField iva;
-    private javax.swing.JTextField iva1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -399,9 +612,14 @@ public class Facturas extends javax.swing.JFrame {
     public static javax.swing.JTextField nit;
     public static javax.swing.JTextField nombrecliente;
     public static javax.swing.JTextField nombreempleado_factu;
+    public static javax.swing.JTextField obtienecantidad1;
+    public static javax.swing.JTextField obtienecodigo;
+    public static javax.swing.JTextField obtieneprecioventa;
+    public static javax.swing.JTextField obtiennombre;
     private javax.swing.JButton regresar;
     private javax.swing.JTextField serie;
+    private javax.swing.JTextField subtotal;
     private javax.swing.JComboBox<String> tipodepago;
-    private javax.swing.JTextField total1;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
 }
